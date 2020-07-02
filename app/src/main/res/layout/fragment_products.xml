@@ -8,27 +8,28 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="@dimen/extra_large_margin"
-            android:layout_marginStart="@dimen/extra_large_margin"
-            android:layout_marginEnd="@dimen/extra_large_margin"
-            android:clipToPadding="false"
-            android:paddingBottom="@dimen/extra_large_margin"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+
+        <androidx.recyclerview.widget.RecyclerView xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/rvProducts"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/extra_large_margin"
+            android:layout_marginTop="@dimen/extra_large_margin"
+            android:layout_marginEnd="@dimen/extra_large_margin"
+            android:clipToPadding="false"
             android:orientation="vertical"
+            android:paddingBottom="@dimen/extra_large_margin"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="20"
             tools:listitem="@layout/item_product" />
+
         <ProgressBar
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
             android:id="@+id/pbLoading"
-            android:layout_height="wrap_content"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
     </FrameLayout>
 
 </layout>

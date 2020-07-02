@@ -14,16 +14,16 @@
         app:layout_constrainedHeight="true">
 
         <TextView
-            android:textStyle="bold"
-            android:id="@+id/tv_title"
+            android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/extra_large_margin"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
+            android:paddingStart="@dimen/medium_margin"
+            android:paddingEnd="@dimen/medium_margin"
             android:text="@string/change_language"
             android:textColor="@android:color/black"
             android:textSize="@dimen/text_medium_size"
+            android:textStyle="bold"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_chainStyle="packed"
@@ -31,10 +31,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_ok"
+            android:id="@+id/btOk"
             style="@style/DialogButtonStyle"
+            android:layout_marginStart="@dimen/small_margin"
             android:backgroundTint="@android:color/white"
-            android:layout_marginStart="4dp"
             android:text="@string/general_ok"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,11 +44,11 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bt_cancel"
             style="@style/DialogButtonStyle"
-            android:layout_marginEnd="4dp"
+            android:layout_marginEnd="@dimen/small_margin"
             android:backgroundTint="@android:color/white"
             android:text="@string/general_cancel"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/bt_ok"
+            app:layout_constraintEnd_toStartOf="@+id/btOk"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="ContentDescription" />
@@ -60,18 +60,18 @@
             android:layout_marginTop="@dimen/medium_margin"
             android:layout_marginBottom="@dimen/medium_margin"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/bt_ok"
+            app:layout_constraintBottom_toTopOf="@+id/btOk"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title">
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle">
 
             <RadioButton
-                android:id="@+id/rb_ro"
+                android:id="@+id/rbRo"
                 style="@style/RadioButtonStyle"
                 android:tag="ro"
                 android:text="@string/language_ro" />
 
             <RadioButton
-                android:id="@+id/rb_en"
+                android:id="@+id/rbEn"
                 style="@style/RadioButtonStyle"
                 android:tag="en"
                 android:text="@string/language_en" />

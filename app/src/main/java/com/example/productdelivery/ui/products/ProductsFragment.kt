@@ -9,14 +9,9 @@ import androidx.lifecycle.Observer
 import com.example.productdelivery.DeliveryApplication
 import com.example.productdelivery.R
 import com.example.productdelivery.data.Result
-import com.example.productdelivery.data.local.LocalInformation
-import com.example.productdelivery.data.model.Category
-import com.example.productdelivery.data.model.Product
-import com.example.productdelivery.databinding.FragmentCategoriesBinding
 import com.example.productdelivery.databinding.FragmentProductsBinding
 import com.example.productdelivery.ui.BaseActivity
 import com.example.productdelivery.ui.BaseFragment
-import com.example.productdelivery.ui.categories.CategoryViewModel
 import com.example.productdelivery.util.Event
 import javax.inject.Inject
 

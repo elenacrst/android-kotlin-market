@@ -1,20 +1,18 @@
 package com.example.productdelivery.ui.categories
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.productdelivery.data.model.Category
 import com.example.productdelivery.databinding.ItemCategoryBinding
-import timber.log.Timber
 
 class CategoriesAdapter(private val clickListener: CategoryCellListener) :
     RecyclerView.Adapter<CategoryCellViewHolder>() {
 
     private var data = ArrayList<Category>()
 
- fun setData(data: List<Category>?) {
+    fun setData(data: List<Category>?) {
         this.data = ArrayList()
         if (data != null) {
             this.data.addAll(data)
@@ -44,7 +42,7 @@ class CategoryCellListener(val clickListener: (id: Long?) -> Unit) {
     fun onClick(id: Long?) = clickListener(id)
 }
 
-class CategoryCellViewHolder(val binding: ItemCategoryBinding) :
+class CategoryCellViewHolder(private val binding: ItemCategoryBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(clickListener: CategoryCellListener, item: Category) {

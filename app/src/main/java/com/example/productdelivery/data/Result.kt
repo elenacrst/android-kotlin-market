@@ -28,14 +28,7 @@ sealed class Result<out T> {
     }
 }
 
-val Result<*>.succeeded
-    get() = this is Result.Success && data != null
-
 enum class ErrorCode(val code: Int) {
     DEFAULT(-1),
-    NO_USER(0),
-    NO_DATA_CONNECTION(1),
-    ERROR_CODE_400(400),
-    ERROR_CODE_500(500),
-    UNAUTHORIZED(401)
+    NO_DATA_CONNECTION(1)
 }

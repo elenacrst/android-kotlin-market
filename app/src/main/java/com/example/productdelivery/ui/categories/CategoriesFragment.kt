@@ -10,16 +10,12 @@ import androidx.navigation.fragment.findNavController
 import com.example.productdelivery.DeliveryApplication
 import com.example.productdelivery.R
 import com.example.productdelivery.data.Result
-import com.example.productdelivery.data.local.LocalInformation
 import com.example.productdelivery.data.model.Category
 import com.example.productdelivery.databinding.FragmentCategoriesBinding
 import com.example.productdelivery.ui.BaseActivity
 import com.example.productdelivery.ui.BaseFragment
 import com.example.productdelivery.util.Event
-import timber.log.Timber
-import java.util.*
 import javax.inject.Inject
-import kotlin.collections.ArrayList
 
 class CategoriesFragment : BaseFragment() {
     private lateinit var categoriesBinding: FragmentCategoriesBinding

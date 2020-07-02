@@ -12,17 +12,18 @@ import java.util.*
 
 //update locale from app
 fun updateLocaleConfig(wrapper: ContextThemeWrapper) {
-   /* if (DeliveryApplication.deliveryApplicationContext.dLocale != Locale("")) {
+    if (DeliveryApplication.deliveryApplicationContext.dLocale != Locale("")) {
 
         Locale.setDefault(DeliveryApplication.deliveryApplicationContext.dLocale)
         val configuration = Configuration()
         configuration.setLocale(DeliveryApplication.deliveryApplicationContext.dLocale)
 
         wrapper.applyOverrideConfiguration(configuration)
-    }*/
+    }
 }
 
 //update locale from activity, so as the strings from application to change too
+@Suppress("DEPRECATION")
 fun wrap(context: Context, language: String): ContextWrapper {
     val newContext: Context
 

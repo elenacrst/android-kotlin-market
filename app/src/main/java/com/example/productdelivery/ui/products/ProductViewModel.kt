@@ -5,7 +5,6 @@ import com.example.productdelivery.data.DeliveryRepository
 import com.example.productdelivery.data.ErrorCode
 import com.example.productdelivery.data.Result
 import com.example.productdelivery.data.api.NoNetworkConnectionException
-import com.example.productdelivery.data.model.Category
 import com.example.productdelivery.data.model.Product
 import com.example.productdelivery.util.Event
 import kotlinx.coroutines.launch
@@ -14,13 +13,14 @@ import java.util.ArrayList
 import javax.inject.Inject
 import kotlin.system.measureTimeMillis
 
-class ProductViewModel @Inject constructor(private val repository: DeliveryRepository) : ViewModel() {
+class ProductViewModel @Inject constructor(private val repository: DeliveryRepository) :
+    ViewModel() {
 
     private var _products: MutableLiveData<List<Product>> = MutableLiveData()
     val products: LiveData<List<Product>>
         get() = _products
-    private var _productsEvent: MutableLiveData<Event<com.example.productdelivery.data.Result<*>>> =
-        MutableLiveData(Event(com.example.productdelivery.data.Result.None))
+    private var _productsEvent: MutableLiveData<Event<Result<*>>> =
+        MutableLiveData(Event(Result.None))
     val productsEvent: LiveData<Event<Result<*>>>
         get() = _productsEvent
 
@@ -58,7 +58,7 @@ class ProductViewModel @Inject constructor(private val repository: DeliveryRepos
         }
     }
 
-    private fun clearData(){
+    private fun clearData() {
         _productsEvent.value = Event(Result.None)
         _products.value = null
     }

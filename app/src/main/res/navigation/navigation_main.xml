@@ -24,6 +24,6 @@
         <argument
             android:name="categoryId"
             app:argType="long"
-            app:nullable="false"/>
+            app:nullable="false" />
     </fragment>
 </navigation>

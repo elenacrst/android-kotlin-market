@@ -10,7 +10,6 @@ import com.example.productdelivery.ui.products.ProductsFragment
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.support.AndroidSupportInjectionModule
-import dagger.android.support.DaggerFragment
 import javax.inject.Singleton
 
 

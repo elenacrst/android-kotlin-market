@@ -4,9 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 
 import androidx.recyclerview.widget.RecyclerView
-import com.example.productdelivery.data.model.Category
 import com.example.productdelivery.data.model.Product
-import com.example.productdelivery.databinding.ItemCategoryBinding
 import com.example.productdelivery.databinding.ItemProductBinding
 
 class ProductsAdapter :
@@ -14,7 +12,7 @@ class ProductsAdapter :
 
     private var data = ArrayList<Product>()
 
- fun setData(data: List<Product>?) {
+    fun setData(data: List<Product>?) {
         this.data = ArrayList()
         if (data != null) {
             this.data.addAll(data)
@@ -40,7 +38,7 @@ class ProductsAdapter :
     }
 }
 
-class ProductViewHolder(val binding: ItemProductBinding) :
+class ProductViewHolder(private val binding: ItemProductBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: Product) {

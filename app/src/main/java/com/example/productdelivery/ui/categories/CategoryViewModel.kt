@@ -13,15 +13,17 @@ import java.util.ArrayList
 import javax.inject.Inject
 import kotlin.system.measureTimeMillis
 
-class CategoryViewModel @Inject constructor(private val repository: DeliveryRepository) : ViewModel() {
+class CategoryViewModel @Inject constructor(private val repository: DeliveryRepository) :
+    ViewModel() {
 
     private var _categories: MutableLiveData<List<Category>> = MutableLiveData()
     val categories: LiveData<List<Category>>
         get() = _categories
-    private var _categoriesEvent: MutableLiveData<Event<com.example.productdelivery.data.Result<*>>> =
-        MutableLiveData(Event(com.example.productdelivery.data.Result.None))
+    private var _categoriesEvent: MutableLiveData<Event<Result<*>>> =
+        MutableLiveData(Event(Result.None))
     val categoriesEvent: LiveData<Event<Result<*>>>
         get() = _categoriesEvent
+
     init {
         clearData()
     }
@@ -57,7 +59,7 @@ class CategoryViewModel @Inject constructor(private val repository: DeliveryRepo
         }
     }
 
-    private fun clearData(){
+    private fun clearData() {
         _categoriesEvent.value = Event(Result.None)
         _categories.value = null
     }

@@ -4,7 +4,8 @@ import com.example.productdelivery.DeliveryApplication
 import com.example.productdelivery.ui.LANGUAGE_RO
 import javax.inject.Inject
 
-class LocalInformation @Inject constructor(private val preferencesSource: PreferencesSource) : ILocalInformation{
+class LocalInformation @Inject constructor(private val preferencesSource: PreferencesSource) :
+    ILocalInformation {
 
     override fun saveLanguage(language: String) {
         preferencesSource.customPrefs()[LANGUAGE_PREFS] = language

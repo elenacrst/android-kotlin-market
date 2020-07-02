@@ -4,12 +4,12 @@
     tools:context="com.sample.app.MainActivity">
 
     <item
-        android:icon="@android:drawable/ic_menu_info_details"
         android:id="@+id/action_language"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visible="true"
+        android:icon="@android:drawable/ic_menu_info_details"
         android:title="@string/language"
+        android:visible="true"
         app:showAsAction="always" />
 
 </menu>

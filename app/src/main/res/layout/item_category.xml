@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
 
         <variable
@@ -14,12 +15,13 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_home"
+        android:id="@+id/cardView"
         style="@style/CategoryCell"
         android:layout_margin="@dimen/small_margin"
         android:onClick="@{() -> clickListener.onClick(item.categoryId)}"
-        app:cardPreventCornerOverlap="false"
-        app:cardBackgroundColor="@color/colorPrimary">
+        app:cardBackgroundColor="@color/colorPrimaryDark"
+        app:cardPreventCornerOverlap="false">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,8 +36,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginStart="@dimen/small_margin"
+                android:layout_marginEnd="@dimen/small_margin"
                 android:breakStrategy="simple"
                 android:gravity="center"
                 android:lines="3"

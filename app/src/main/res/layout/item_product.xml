@@ -2,32 +2,33 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
 
         <variable
             name="item"
             type="com.example.productdelivery.data.model.Product" />
     </data>
+
     <FrameLayout
-        android:layout_margin="@dimen/small_margin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_margin">
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/extra_large_margin"
             android:layout_marginStart="@dimen/small_margin"
             android:layout_marginTop="@dimen/small_margin"
             android:layout_marginEnd="@dimen/small_margin"
-            app:layout_constraintEnd_toEndOf="@+id/tvArticleName"
-            app:layout_constraintStart_toStartOf="@+id/scanArticle">
+            android:padding="@dimen/extra_large_margin">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:paddingBottom="@dimen/medium_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:animateLayoutChanges="true">
+                android:animateLayoutChanges="true"
+                android:paddingBottom="@dimen/medium_margin">
 
                 <TextView
                     android:id="@+id/tvArticleName"
@@ -38,16 +39,16 @@
                     android:layout_marginTop="@dimen/medium_margin"
                     android:layout_marginEnd="@dimen/medium_margin"
                     android:ellipsize="end"
+                    android:gravity="center"
                     android:lines="2"
                     android:text="@{item.name}"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:gravity="center"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Pepsi lime zero 500ml" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tvProductCodeLabel"
                     style="@style/Label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -59,7 +60,6 @@
 
                 <TextView
                     android:id="@+id/tvProductCode"
-                    app:layout_goneMarginStart="@dimen/extra_large_margin"
                     style="@style/ValueText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -67,14 +67,15 @@
                     android:text="@{Long.toString(item.productId)}"
                     app:layout_constraintEnd_toEndOf="@+id/tvArticleName"
                     app:layout_constraintStart_toEndOf="@+id/barrier8"
-                    app:layout_constraintTop_toTopOf="@+id/textView2"
+                    app:layout_constraintTop_toTopOf="@+id/tvProductCodeLabel"
                     tools:text="123456789" />
+
                 <androidx.constraintlayout.widget.Barrier
                     android:id="@+id/barrier8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:barrierDirection="right"
-                    app:constraint_referenced_ids="tvPriceLabel, textView2" />
+                    app:constraint_referenced_ids="tvPriceLabel, tvProductCodeLabel" />
 
                 <TextView
                     android:id="@+id/tvPriceLabel"
@@ -82,11 +83,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/general_price"
-                    app:layout_constraintStart_toStartOf="@+id/textView2"
+                    app:layout_constraintStart_toStartOf="@+id/tvProductCodeLabel"
                     app:layout_constraintTop_toBottomOf="@+id/tvProductCode" />
 
                 <TextView
-                    app:layout_goneMarginStart="@dimen/extra_large_margin"
                     android:id="@+id/tvPrice"
                     style="@style/ValueText"
                     android:layout_width="0dp"
@@ -97,15 +97,17 @@
                     app:layout_constraintEnd_toEndOf="@+id/tvArticleName"
                     app:layout_constraintStart_toEndOf="@id/barrier8"
                     app:layout_constraintTop_toBottomOf="@+id/tvProductCode"
+                    app:layout_goneMarginStart="@dimen/extra_large_margin"
                     tools:text="123456789" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
+
         <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
             android:id="@+id/pbLoading"
-            android:layout_height="wrap_content"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
     </FrameLayout>
 
 
