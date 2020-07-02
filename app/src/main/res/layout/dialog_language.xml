@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/DialogStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constrainedHeight="true">
+
+        <TextView
+            android:textStyle="bold"
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/extra_large_margin"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="@string/change_language"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_medium_size"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_ok"
+            style="@style/DialogButtonStyle"
+            android:backgroundTint="@android:color/white"
+            android:layout_marginStart="4dp"
+            android:text="@string/general_ok"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bt_cancel"
+            tools:ignore="ContentDescription" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_cancel"
+            style="@style/DialogButtonStyle"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="@android:color/white"
+            android:text="@string/general_cancel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/bt_ok"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <RadioGroup
+            android:id="@+id/rg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginBottom="@dimen/medium_margin"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/bt_ok"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+            <RadioButton
+                android:id="@+id/rb_ro"
+                style="@style/RadioButtonStyle"
+                android:tag="ro"
+                android:text="@string/language_ro" />
+
+            <RadioButton
+                android:id="@+id/rb_en"
+                style="@style/RadioButtonStyle"
+                android:tag="en"
+                android:text="@string/language_en" />
+        </RadioGroup>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

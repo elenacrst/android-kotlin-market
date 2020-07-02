@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+        <variable
+            name="item"
+            type="com.example.productdelivery.data.model.Product" />
+    </data>
+    <FrameLayout
+        android:layout_margin="@dimen/small_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/extra_large_margin"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/small_margin"
+            app:layout_constraintEnd_toEndOf="@+id/tvArticleName"
+            app:layout_constraintStart_toStartOf="@+id/scanArticle">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:paddingBottom="@dimen/medium_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true">
+
+                <TextView
+                    android:id="@+id/tvArticleName"
+                    style="@style/ProductNameText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/medium_margin"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:layout_marginEnd="@dimen/medium_margin"
+                    android:ellipsize="end"
+                    android:lines="2"
+                    android:text="@{item.name}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:gravity="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Pepsi lime zero 500ml" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    style="@style/Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/medium_margin"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:text="@string/general_product_code"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvArticleName" />
+
+                <TextView
+                    android:id="@+id/tvProductCode"
+                    app:layout_goneMarginStart="@dimen/extra_large_margin"
+                    style="@style/ValueText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:text="@{Long.toString(item.productId)}"
+                    app:layout_constraintEnd_toEndOf="@+id/tvArticleName"
+                    app:layout_constraintStart_toEndOf="@+id/barrier8"
+                    app:layout_constraintTop_toTopOf="@+id/textView2"
+                    tools:text="123456789" />
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/barrier8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:barrierDirection="right"
+                    app:constraint_referenced_ids="tvPriceLabel, textView2" />
+
+                <TextView
+                    android:id="@+id/tvPriceLabel"
+                    style="@style/Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/general_price"
+                    app:layout_constraintStart_toStartOf="@+id/textView2"
+                    app:layout_constraintTop_toBottomOf="@+id/tvProductCode" />
+
+                <TextView
+                    app:layout_goneMarginStart="@dimen/extra_large_margin"
+                    android:id="@+id/tvPrice"
+                    style="@style/ValueText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:gravity="start"
+                    android:text="@{Double.toString(item.price)}"
+                    app:layout_constraintEnd_toEndOf="@+id/tvArticleName"
+                    app:layout_constraintStart_toEndOf="@id/barrier8"
+                    app:layout_constraintTop_toBottomOf="@+id/tvProductCode"
+                    tools:text="123456789" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/pbLoading"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
+
+
+</layout>

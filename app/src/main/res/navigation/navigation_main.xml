@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main_container"
+    app:startDestination="@id/categoriesFragment">
+
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.example.productdelivery.ui.categories.CategoriesFragment"
+        android:label="@string/categories"
+        tools:layout="@layout/fragment_categories">
+        <action
+            android:id="@+id/action_categoriesFragment_to_productsFragment"
+            app:destination="@id/productsFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.example.productdelivery.ui.products.ProductsFragment"
+        android:label="@string/products"
+        tools:layout="@layout/fragment_products">
+        <argument
+            android:name="categoryId"
+            app:argType="long"
+            app:nullable="false"/>
+    </fragment>
+</navigation>

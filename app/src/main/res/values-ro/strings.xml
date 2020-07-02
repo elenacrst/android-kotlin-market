@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Livrare Produse</string>
+    <string name="change_language">Schimba limba</string>
+    <string name="general_ok">OK</string>
+    <string name="general_cancel">Anuleaza</string>
+    <string name="language_ro">Romana</string>
+    <string name="language_en">Engleza</string>
+    <string name="general_error_message">Eroare de server</string>
+    <string name="no_data_connection">Nu exista conexiune la Internet</string>
+    <string name="language">Limba</string>
+    <string name="categories">Categorii</string>
+    <string name="general_product_code">Codul produsului</string>
+    <string name="general_price">Pretul produsului</string>
+    <string name="products">Produse</string>
+</resources>

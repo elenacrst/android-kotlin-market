@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Product Delivery</string>
+    <string name="change_language">Change language</string>
+    <string name="general_ok">OK</string>
+    <string name="general_cancel">Cancel</string>
+    <string name="language_ro">Romanian</string>
+    <string name="language_en">English</string>
+    <string name="general_error_message">Server error</string>
+    <string name="no_data_connection">No Internet connection</string>
+    <string name="language">Language</string>
+    <string name="categories">Categories</string>
+    <string name="general_product_code">Product code</string>
+    <string name="general_price">Product price</string>
+    <string name="products">Products</string>
+</resources>
