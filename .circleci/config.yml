@@ -30,9 +30,9 @@ jobs:
           name: Accept licenses
           command: |
             (sleep 2; echo "y";) | sdkmanager --licenses
-      - run:
-          name: Accept licenses2
-          command: yes | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;26.0.0"
+#      - run:
+#          name: Accept licenses2
+#          command: yes | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;26.0.2"
       - run:
           name: Create emulator
           command: avdmanager create avd -n test -k "system-images;android-26;google_apis;x86"
