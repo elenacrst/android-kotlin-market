@@ -85,3 +85,8 @@ jobs:
       - run:
           name: Run Tests
           command: ./gradlew app:connectedAndroidTest
+workflows:
+  build_and_test:
+    jobs:
+      - build
+      - ui_test
