@@ -24,7 +24,7 @@ jobs:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: Setup emulator
-          command: sdkmanager install "system-images;android-26;google_apis;x86"
+          command: sdkmanager "system-images;android-26;google_apis;x86"
       - run:
           name: Accept licenses
           command: sdkmanager --licenses
