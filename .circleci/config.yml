@@ -26,16 +26,19 @@ jobs:
           name: Setup emulator
           command: |
             (sleep 2; echo "y";) | sdkmanager "system-images;android-26;google_apis;x86"
-      - run:
-          name: Accept licenses
-          command: |
-            (sleep 2; echo "y";) | sdkmanager --licenses
+#      - run:
+#          name: Accept licenses
+#          command: |
+#            (sleep 2; echo "y";) | sdkmanager --licenses
 #      - run:
 #          name: Accept licenses2
 #          command: yes | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;26.0.2"
       - run:
           name: Create emulator
-          command: avdmanager create avd -n test -k "system-images;android-26;google_apis;x86"
+          command: |
+            avdmanager create avd -n test -k "system-images;android-26;google_apis;x86"
+            echo "no"
+#        no custom hardware profile
       - run:
           name: Launch emulator
           command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator -avd test -noaudio -no-boot-anim -no-window -accel auto -verbose
