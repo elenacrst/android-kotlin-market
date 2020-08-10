@@ -77,10 +77,10 @@ jobs:
       - run:
           name: Install Android sdk
           command: |
-            brew tap homebrew/cask
-            brew cask install android-sdk
-#            HOMEBREW_NO_AUTO_UPDATE=1 brew tap homebrew/cask
-#            HOMEBREW_NO_AUTO_UPDATE=1 brew cask install android-sdk
+            HOMEBREW_NO_AUTO_UPDATE=1 brew tap homebrew/cask
+            HOMEBREW_NO_AUTO_UPDATE=1 brew cask install android-sdk
+      #            HOMEBREW_NO_AUTO_UPDATE=1 brew tap homebrew/cask
+      #            HOMEBREW_NO_AUTO_UPDATE=1 brew cask install android-sdk
       - run:
           name: Install emulator dependencies
           command: (yes | sdkmanager "platform-tools" "platforms;android-26" "extras;intel;Hardware_Accelerated_Execution_Manager" "build-tools;26.0.0" "system-images;android-26;google_apis;x86" "emulator" --verbose) || true
