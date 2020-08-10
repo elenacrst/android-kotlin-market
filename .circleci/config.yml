@@ -50,7 +50,7 @@ jobs:
           command: export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ANDROID_HOME/tools/lib
       - run:
           command:
-            sudo apt-get install libpulse0:i386
+            sudo apt-get install pulseaudio
       - run:
           name: Launch emulator
           command:
