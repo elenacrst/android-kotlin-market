@@ -77,7 +77,7 @@ jobs:
       - run:
           name: Install Android sdk
           command: |
-            brew cask install android-sdk
+            brew install android-sdk
 #            HOMEBREW_NO_AUTO_UPDATE=1 brew tap homebrew/cask
 #            HOMEBREW_NO_AUTO_UPDATE=1 brew cask install android-sdk
       - run:
