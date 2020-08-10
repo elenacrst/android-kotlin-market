@@ -72,11 +72,12 @@ jobs:
       - run:
           name: Install Homebrew
           command: |
+            sudo chown -R $USER:admin /usr/local/*
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
       - run:
           name: Install Android sdk
           command: |
-            brew install android-sdk
+            brew cask install android-sdk
 #            HOMEBREW_NO_AUTO_UPDATE=1 brew tap homebrew/cask
 #            HOMEBREW_NO_AUTO_UPDATE=1 brew cask install android-sdk
       - run:
