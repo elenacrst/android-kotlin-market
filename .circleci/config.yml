@@ -49,6 +49,9 @@ jobs:
       - run:
           command: export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ANDROID_HOME/tools/lib
       - run:
+          command:
+            sudo apt-get install libpulse0:i386
+      - run:
           name: Launch emulator
           command:
 #                        export LD_LIBRARY_PATH=${ANDROID_HOexport LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ANDROID_HOME/tools/libME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib &&
