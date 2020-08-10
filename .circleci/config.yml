@@ -62,18 +62,18 @@ jobs:
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
-      - run:
-          name: Setup environment variables
-          command: |
-            echo 'export PATH="$PATH:/usr/local/opt/node@8/bin:${HOME}/.yarn/bin:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin:/usr/local/share/android-sdk/tools/bin"' >> $BASH_ENV
-            echo 'export ANDROID_HOME="/usr/local/share/android-sdk"' >> $BASH_ENV
-            echo 'export ANDROID_SDK_HOME="/usr/local/share/android-sdk"' >> $BASH_ENV
-            echo 'export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"' >> $BASH_ENV
-            echo 'export QEMU_AUDIO_DRV=none' >> $BASH_ENV
+#      - run:
+#          name: Setup environment variables
+#          command: |
+#            echo 'export PATH="$PATH:/usr/local/opt/node@8/bin:${HOME}/.yarn/bin:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin:/usr/local/share/android-sdk/tools/bin"' >> $BASH_ENV
+#            echo 'export ANDROID_HOME="/usr/local/share/android-sdk"' >> $BASH_ENV
+#            echo 'export ANDROID_SDK_HOME="/usr/local/share/android-sdk"' >> $BASH_ENV
+#            echo 'export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"' >> $BASH_ENV
+#            echo 'export QEMU_AUDIO_DRV=none' >> $BASH_ENV
       - run:
           name: Install emulator dependencies
           command: (yes | sdkmanager "platform-tools" "platforms;android-25" "extras;intel;Hardware_Accelerated_Execution_Manager" "build-tools;25.0.0" "system-images;android-25;google_apis;arm64-v8a" "emulator" --verbose) || true
-      - run: touch /usr/local/share/android-sdk/repositories.cfg
+      - run: mkdir -p /root/.android && touch /root/.android/repositories.cfg
       - run: avdmanager create avd -n Pixel_2_API_25 -k "system-images;android-25;google_apis;arm64-v8a" -g google_apis -d "Nexus 5"
       - run:
           name: Run emulator in background
