@@ -70,11 +70,11 @@ jobs:
             echo 'export QEMU_AUDIO_DRV=none' >> $BASH_ENV
       - run:
           name: Install emulator dependencies
-          command: (yes | sdkmanager "platform-tools" "platforms;android-29" "extras;intel;Hardware_Accelerated_Execution_Manager" "build-tools;29.0.0" "system-images;android-29;google_apis;x86" "emulator" --verbose) || true
-      - run: avdmanager create avd -n Pixel_2_API_29 -k "system-images;android-29;google_apis;x86" -g google_apis -d "Nexus 5"
+          command: (yes | sdkmanager "platform-tools" "platforms;android-25" "extras;intel;Hardware_Accelerated_Execution_Manager" "build-tools;25.0.0" "system-images;android-25;google_apis;arm64-v8a" "emulator" --verbose) || true
+      - run: avdmanager create avd -n Pixel_2_API_25 -k "system-images;android-25;google_apis;arm64-v8a" -g google_apis -d "Nexus 5"
       - run:
           name: Run emulator in background
-          command: /usr/local/share/android-sdk/tools/emulator @Pixel_2_API_29 -skin 1080x2066 -memory 2048 -noaudio
+          command: /usr/local/share/android-sdk/tools/emulator @Pixel_2_API_25 -skin 1080x2066 -memory 2048 -noaudio
           background: true
       - run:
           name: Run Tests
