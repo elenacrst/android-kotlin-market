@@ -24,10 +24,17 @@ jobs:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: Setup emulator
-          command: y | sdkmanager "system-images;android-26;google_apis;x86"
+          command: |
+            sdkmanager "system-images;android-26;google_apis;x86" | yes
+            (while sleep 3; do echo "y"; done) | sleep 5
       - run:
           name: Accept licenses
-          command: y | sdkmanager --licenses
+          command: |
+            (while sleep 3; do echo "y"; done) | sdkmanager --licenses | yes
+            sleep 5
+      - run:
+          name: Accept licenses2
+          command: yes | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;26.0.0"
       - run:
           name: Create emulator
           command: avdmanager create avd -n test -k "system-images;android-26;google_apis;x86"
