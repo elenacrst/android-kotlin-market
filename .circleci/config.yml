@@ -75,7 +75,7 @@ jobs:
           command: (yes | sdkmanager "platform-tools" "platforms;android-25" "extras;intel;Hardware_Accelerated_Execution_Manager" "build-tools;25.0.0" "system-images;android-25;google_apis;arm64-v8a" "emulator" --verbose) || true
       - run:
           command: sudo chmod a+w /root
-      - run: mkdir -p /root/.android && touch /root/.android/repositories.cfg
+      - run: mkdir .android && touch .android/repositories.cfg
       - run: avdmanager create avd -n Pixel_2_API_25 -k "system-images;android-25;google_apis;arm64-v8a" -g google_apis -d "Nexus 5"
       - run:
           name: Run emulator in background
