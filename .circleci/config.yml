@@ -26,6 +26,7 @@ jobs:
             echo 'export ANDROID_SDK_HOME="/usr/local/share/android-sdk"' >> $BASH_ENV
             echo 'export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"' >> $BASH_ENV
             echo 'export QEMU_AUDIO_DRV=none' >> $BASH_ENV
+            echo 'export TERM="dumb" >> $BASH_ENV
       - save_cache:
           paths:
             - ~/.gradle
@@ -56,15 +57,16 @@ jobs:
           command:
 #                        export LD_LIBRARY_PATH=${ANDROID_HOexport LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ANDROID_HOME/tools/libME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib &&
             #            emulator64-x86 -avd test -noaudio -no-boot-anim -no-window -accel auto -verbose
-            emulator -avd test -noaudio -no-boot-anim -no-window -accel auto -verbose
+            emulator -avd test -no-audio -no-boot-anim -no-window
           background: true
+          parallel: true
       - run:
           name: Wait emulator
           command: |
-            # wait for it to have booted
+#             wait for it to have booted
             circle-android wait-for-boot
-            # unlock the emulator screen
-            sleep 30
+#            # unlock the emulator screen
+#            sleep 30
             adb shell input keyevent 82
       - run:
           name: Run EspressoTests
