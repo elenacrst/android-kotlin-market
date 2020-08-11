@@ -25,7 +25,7 @@ jobs:
             (sleep 2; echo "y";) | sdkmanager "system-images;android-29;default;x86" && echo "no" | avdmanager create avd -n test -k "system-images;android-29;default;x86"
       - run:
           name: Launch emulator
-          command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/qemu/linux-x86_64/qemu-system-i386 && qemu-system-i386 -avd test -noaudio -no-boot-anim -no-window -accel on
+          command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/qemu/linux-x86_64/qemu-system-i386 && qemu-system-i386 test
           background: true
       - run:
           name: Run EspressoTests
