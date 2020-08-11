@@ -6,7 +6,7 @@ jobs:
     working_directory: ~/code
     docker:
       # Android the primary container
-      - image: budtmo/docker-android-x86-7.1.1
+      - image: budtmo/docker-android-x86-10.0
     environment:
       JVM_OPTS: -Xmx3200m
     steps:
