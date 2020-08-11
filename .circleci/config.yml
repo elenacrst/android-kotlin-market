@@ -6,7 +6,7 @@ jobs:
     working_directory: ~/code
     docker:
       # Android the primary container
-      - image: circleci/android:api-23
+      - image: circleci/android:api-26-alpha
     environment:
       JVM_OPTS: -Xmx3200m
     steps:
@@ -18,61 +18,14 @@ jobs:
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
-      - run:
-          name: Setup environment variables
-          command: |
-            echo 'export PATH="$PATH:/usr/local/opt/node@8/bin:${HOME}/.yarn/bin:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin:/usr/local/share/android-sdk/tools/bin"' >> $BASH_ENV
-            echo 'export ANDROID_HOME="/usr/local/share/android-sdk"' >> $BASH_ENV
-            echo 'export ANDROID_SDK_HOME="/usr/local/share/android-sdk"' >> $BASH_ENV
-            echo 'export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"' >> $BASH_ENV
-            echo 'export QEMU_AUDIO_DRV=none' >> $BASH_ENV
-            echo 'export TERM="dumb"' >> $BASH_ENV
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+
       - run:
           name: Setup emulator
-          command: |
-            (sleep 2; echo "y";) | sdkmanager "system-images;android-22;armeabi-v7a"
-      #      - run:
-      #          name: Accept licenses
-      #          command: |
-      #            (sleep 2; echo "y";) | sdkmanager --licenses
-      #      - run:
-      #          name: Accept licenses2
-      #          command: yes | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;26.0.2"
-      - run:
-          name: Create emulator
-          command: |
-            (sleep 2; echo "no";) | avdmanager create avd -n test -k "system-images;android-22;armeabi-v7a"
-      #        no custom hardware profile; export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib &&
-      #      - run:
-      #          command:
-      #            sudo apt-get install libpulse0
-      #      - run:
-      #          command: export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ANDROID_HOME/tools/lib
+          command: sdkmanager "system-images;android-22;default;armeabi-v7a" && echo "no" | avdmanager create avd -n test -k "system-images;android-22;default;armeabi-v7a"
       - run:
           name: Launch emulator
-          command:
-            #                        export LD_LIBRARY_PATH=${ANDROID_HOexport LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ANDROID_HOME/tools/libME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib &&
-            #            emulator64-x86 -avd test -noaudio -no-boot-anim -no-window -accel auto -verbose
-#            emulator -avd test -no-boot-anim -no-window -no-accel -memory 2048 -verbose &
-            emulator -avd circleci-android22 -no-audio -no-window
+          command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
           background: true
-          parallel: true
-      - run:
-          name: Wait emulator
-          command: |
-            circle-android wait-for-boot
-            sleep 30
-      - run:
-          name: unblock emulator
-          command: |
-            adb shell input keyevent 82
-      #            ./gradlew :app:connectedProductsDebugAndroidTest
-      #                        sleep 5
-      #                        adb shell input keyevent 82
       - run:
           name: Run EspressoTests
           command: ./gradlew :app:connectedProductsDebugAndroidTest
@@ -81,6 +34,19 @@ jobs:
           destination: reports
       - store_test_results:
           path: app/build/test-results
+          #      - run:
+          #          name: Setup environment variables
+          #          command: |
+          #            echo 'export PATH="$PATH:/usr/local/opt/node@8/bin:${HOME}/.yarn/bin:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin:/usr/local/share/android-sdk/tools/bin"' >> $BASH_ENV
+          #            echo 'export ANDROID_HOME="/usr/local/share/android-sdk"' >> $BASH_ENV
+          #            echo 'export ANDROID_SDK_HOME="/usr/local/share/android-sdk"' >> $BASH_ENV
+          #            echo 'export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"' >> $BASH_ENV
+          #            echo 'export QEMU_AUDIO_DRV=none' >> $BASH_ENV
+          #            echo 'export TERM="dumb"' >> $BASH_ENV
+          #      - save_cache:
+          #          paths:
+          #            - ~/.gradle
+          #          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
 #  build:
 #    working_directory: ~/code
 #    docker:
