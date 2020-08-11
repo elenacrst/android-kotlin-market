@@ -29,8 +29,10 @@ jobs:
             (sleep 2; echo "y";) | sdkmanager "system-images;android-29;default;x86" && echo "no" | avdmanager create avd -n test -k "system-images;android-29;default;x86"
       - run:
           name: Launch emulator
-          command: export SHELL=/bin/bash && emulator -avd test -noaudio -no-boot-anim -no-window -gpu off -verbose -qemu &
-          background: true
+          command: |
+            export SHELL=/bin/bash && emulator -avd test -noaudio -no-boot-anim -no-window -gpu off -verbose -qemu &
+            adb wait-for-device
+            export TERM=${TERM:-dumb}
       - run:
           name: Run EspressoTests
           command: ./gradlew :app:connectedProductsDebugAndroidTest
