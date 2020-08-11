@@ -26,7 +26,7 @@ jobs:
             echo 'export ANDROID_SDK_HOME="/usr/local/share/android-sdk"' >> $BASH_ENV
             echo 'export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"' >> $BASH_ENV
             echo 'export QEMU_AUDIO_DRV=none' >> $BASH_ENV
-            echo 'export TERM="dumb" >> $BASH_ENV
+            echo 'export TERM="dumb"' >> $BASH_ENV
       - save_cache:
           paths:
             - ~/.gradle
