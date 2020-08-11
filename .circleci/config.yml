@@ -20,8 +20,7 @@ jobs:
           command: ./gradlew androidDependencies
       - run:
           name: Environment var
-          command: ENV PATH ${ANDROID_HOME}/emulator:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${PATH}
-
+          command: echo 'export PATH="$PATH:${ANDROID_HOME}/emulator:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools"' >> $BASH_ENV
       - run:
           name: Setup emulator
           command: |
