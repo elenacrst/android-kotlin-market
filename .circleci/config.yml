@@ -29,7 +29,7 @@ jobs:
             (sleep 2; echo "y";) | sdkmanager "system-images;android-29;default;x86" && echo "no" | avdmanager create avd -n test -k "system-images;android-29;default;x86"
       - run:
           name: Launch emulator
-          command: export LD_LIBRARY_PATH=${ANDROID_HOME}/tools && emulator -avd test -noaudio -no-boot-anim -no-window -accel on
+          command: export SHELL=/bin/bash && emulator -avd test -noaudio -no-boot-anim -no-window -gpu off -verbose -qemu &
           background: true
       - run:
           name: Run EspressoTests
