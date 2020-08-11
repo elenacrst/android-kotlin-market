@@ -6,7 +6,7 @@ jobs:
     working_directory: ~/code
     docker:
       # Android the primary container
-      - image: circleci/android:api-22
+      - image: circleci/android:api-23
     environment:
       JVM_OPTS: -Xmx3200m
     steps:
@@ -57,12 +57,19 @@ jobs:
           command:
             #                        export LD_LIBRARY_PATH=${ANDROID_HOexport LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ANDROID_HOME/tools/libME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib &&
             #            emulator64-x86 -avd test -noaudio -no-boot-anim -no-window -accel auto -verbose
-            emulator -avd test -no-boot-anim -no-window -no-accel -memory 2048 -verbose &
+#            emulator -avd test -no-boot-anim -no-window -no-accel -memory 2048 -verbose &
+            emulator -avd circleci-android22 -no-audio -no-window
           background: true
           parallel: true
       - run:
-          name: Wait emulator and run espresso tests
-          command: circle-android wait-for-boot
+          name: Wait emulator
+          command: |
+            circle-android wait-for-boot
+            sleep 30
+      - run:
+          name: unblock emulator
+          command: |
+            adb shell input keyevent 82
       #            ./gradlew :app:connectedProductsDebugAndroidTest
       #                        sleep 5
       #                        adb shell input keyevent 82
