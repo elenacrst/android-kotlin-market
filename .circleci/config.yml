@@ -6,7 +6,7 @@ jobs:
     working_directory: ~/code
     docker:
       # Android the primary container
-      - image: circleci/android:api-26-alpha
+      - image: circleci/android:api-25
     environment:
       JVM_OPTS: -Xmx3200m
     steps:
@@ -33,7 +33,7 @@ jobs:
       - run:
           name: Setup emulator
           command: |
-            (sleep 2; echo "y";) | sdkmanager "system-images;android-26;google_apis;x86"
+            (sleep 2; echo "y";) | sdkmanager "system-images;android-25;google_apis;arm64-v8a"
 #      - run:
 #          name: Accept licenses
 #          command: |
@@ -44,7 +44,7 @@ jobs:
       - run:
           name: Create emulator
           command: |
-            (sleep 2; echo "no";) | avdmanager create avd -n test -k "system-images;android-26;google_apis;x86"
+            (sleep 2; echo "no";) | avdmanager create avd -n test -k "system-images;android-25;google_apis;arm64-v8a"
 #        no custom hardware profile; export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib &&
       - run:
           command:
