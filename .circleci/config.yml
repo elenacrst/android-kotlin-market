@@ -30,10 +30,9 @@ jobs:
       - run:
           name: Launch emulator
           command: |
-            export SHELL=/bin/bash
-            emulator -avd test -noaudio -no-boot-anim -no-window -gpu off -verbose -qemu &
+            export SHELL=/bin/bash && emulator -avd test -noaudio -no-boot-anim -no-window -gpu off -verbose -qemu &
             adb wait-for-device
-            export TERM=${TERM:-dumb}
+
       - run:
           name: Run EspressoTests
           command: ./gradlew :app:connectedProductsDebugAndroidTest
