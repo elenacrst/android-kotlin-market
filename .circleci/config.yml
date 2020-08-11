@@ -34,7 +34,7 @@ jobs:
       - run:
           name: Setup emulator
           command: |
-            (sleep 2; echo "y";) | sdkmanager "system-images;android-22;google_apis;armeabi-v7a"
+            (sleep 2; echo "y";) | sdkmanager "system-images;android-22;armeabi-v7a"
       #      - run:
       #          name: Accept licenses
       #          command: |
@@ -45,7 +45,7 @@ jobs:
       - run:
           name: Create emulator
           command: |
-            (sleep 2; echo "no";) | avdmanager create avd -n test -k "system-images;android-22;google_apis;armeabi-v7a"
+            (sleep 2; echo "no";) | avdmanager create avd -n test -k "system-images;android-22;armeabi-v7a"
       #        no custom hardware profile; export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib &&
       #      - run:
       #          command:
