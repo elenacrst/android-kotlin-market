@@ -29,9 +29,15 @@ jobs:
             (sleep 2; echo "y";) | sdkmanager "system-images;android-29;default;x86" && echo "no" | avdmanager create avd -n test -k "system-images;android-29;default;x86"
       - run:
           name: Launch emulator
-          command: |
-            export SHELL=/bin/bash && emulator -avd test -noaudio -no-boot-anim -no-window -gpu off -verbose -qemu &
-            export SHELL=/bin/bash && adb wait-for-device
+          command: export SHELL=/bin/bash && emulator -avd test -noaudio -no-boot-anim -no-window -gpu off -verbose -qemu &
+          background: true
+          parallel: true
+      - run:
+          name: Wait for emulator
+          command: adb wait-for-device
+      - run:
+          name: Wait for emulator still
+          command: sleep 90
 
       - run:
           name: Run EspressoTests
