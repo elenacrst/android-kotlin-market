@@ -34,7 +34,7 @@ jobs:
           parallel: true
       - run:
           name: Wait for emulator
-          command: timeout 100 adb wait-for-device
+          command: timeout 360000 adb wait-for-device
 #      - run:
 #          name: Wait for emulator still
 #          command: sleep 90
