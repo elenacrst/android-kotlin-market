@@ -68,13 +68,11 @@ reference:
       key: *gradle_cache_path
       paths:
         - ~/.gradle
-
   ## Dependency Downloads
   download_android_dependencies: &download_android_dependencies
     run:
       name: Download Android Dependencies
       command: ./gradlew androidDependencies
-
 jobs:
   build:
     <<: *android_config
