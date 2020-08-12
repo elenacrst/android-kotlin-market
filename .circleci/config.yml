@@ -31,7 +31,7 @@ jobs:
           name: Launch emulator
           command: |
             export SHELL=/bin/bash && emulator -avd test -noaudio -no-boot-anim -no-window -gpu off -verbose -qemu &
-            adb wait-for-device
+            export SHELL=/bin/bash && adb wait-for-device
 
       - run:
           name: Run EspressoTests
