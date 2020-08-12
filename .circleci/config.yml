@@ -76,7 +76,7 @@ reference:
       command: ./gradlew androidDependencies
 
 jobs:
-  ui_test:
+  build:
     <<: *android_config
     steps:
       - checkout
