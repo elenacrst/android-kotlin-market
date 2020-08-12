@@ -34,10 +34,10 @@ jobs:
           parallel: true
       - run:
           name: Wait for emulator
-          command: adb wait-for-device
-      - run:
-          name: Wait for emulator still
-          command: sleep 90
+          command: timeout 100 adb wait-for-device
+#      - run:
+#          name: Wait for emulator still
+#          command: sleep 90
 
       - run:
           name: Run EspressoTests
