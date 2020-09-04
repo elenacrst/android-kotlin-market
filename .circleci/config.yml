@@ -28,8 +28,3 @@ jobs:
           destination: reports
       - store_test_results:
           path: app/build/test-results
-workflows:
-  build_and_test:
-    jobs:
-      - build
-      - ui_test
