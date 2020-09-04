@@ -1,4 +1,4 @@
-package com.example.productdelivery
+package com.example.productdelivery.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -6,9 +6,9 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.example.productdelivery.DeliveryApplication
+import com.example.productdelivery.R
 import com.example.productdelivery.databinding.ActivityMainBinding
-import com.example.productdelivery.ui.BaseActivity
-import com.example.productdelivery.ui.LanguageDialog
 import com.example.productdelivery.util.wrap
 
 class MainActivity : BaseActivity() {

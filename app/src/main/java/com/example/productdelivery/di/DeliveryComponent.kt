@@ -2,7 +2,7 @@ package com.example.productdelivery.di
 
 import android.content.Context
 import com.example.productdelivery.DeliveryApplication
-import com.example.productdelivery.MainActivity
+import com.example.productdelivery.ui.MainActivity
 import com.example.productdelivery.data.local.LocalInformation
 import com.example.productdelivery.data.local.PreferencesSource
 import com.example.productdelivery.ui.categories.CategoriesFragment
